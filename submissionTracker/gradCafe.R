@@ -7,26 +7,24 @@ require(RCurl)
 #source("getSubmissions.R")
 Sys.setlocale("LC_TIME", "C") # This is needed for proper date handling
 
-# Chars is here just for reference. FOrmerly, the code fetched results from ?q=a+, ?q=b+ and so on.
-#chars <- c('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v',
-#           'w','x','y','z','1','2','3','4','5','6','7','8','9','0')
-
 # Connect to the database and retrieve the last submission ID
 con <- dbConnect(RMySQL::MySQL(), dbname = "mydb", user="rUpdater", password="rUpdate")
 query <- paste('SELECT MAX(submissionId) FROM submissions')
 maxDB <- as.integer(dbGetQuery(conn=con, statement=query))
-cat(paste0('Last submitId is:', maxDB))
+print(paste0('Last submitId is:', maxDB))
 
-numPages = 'unknown'
-pageNo = 1
+numPages <- 'unknown'
+pageNo <- 1
 repeat {
   # Construct the page URL
   pageURL <- paste0('http://thegradcafe.com/survey/index.php?q=%28a*%7Cb*%7Cc*%7Cd*%7Ce*%7Cf*%7Cg*%7Ch*%7Ci*%7Cj*%7Ck*%7Cl*%7Cm*%7Cn*%7Co*%7Cp*%7Cq*%7Cr*%7Cs*%7Ct*%7Cu*%7Cv*%7Cw*%7Cx*%7Cy*%7Cz*%7C1*%7C2*%7C3*%7C4*%7C5*%7C6*%7C7*%7C8*%7C9*%7C0*%7C%28*%7C%29*%7C_*%29&t=a&o=&pp=250&p=',pageNo)
 
   # Download the page
   timer <- Sys.time()
-  sourceCode <- getURL(pageURL)
-  print(paste0('Download of page #', pageNo, '(out of ', numPages,') is complete', ' (took ', Sys.time()-timer, ' seconds'))
+  curlHandle <- getCurlHandle()
+  curlSetOpt(useragent = 'Chrome 39.0.2171.71 (64-bit)', curl = curlHandle)
+  sourceCode <- getURL(pageURL, .encoding="UTF8", curl = curlHandle, maxredirs = as.integer(20), followlocation = TRUE)
+  print(paste0('----- Download of page #', pageNo, '(out of ', numPages,') is complete', ' (took ', Sys.time()-timer, ' seconds'))
   
   # Fetch the total number of result pages
   pattern <- 'Showing <strong>\\d* results<\\/strong> over (\\d*) pages'
@@ -40,7 +38,7 @@ repeat {
   
   # Extract the submissions from source code
   timer <- Sys.time()
-  submissions <- readHTMLTable(pageURL, colClasses = 'character', stringsAsFactors = FALSE)[[1]][-1,]
+  submissions <- readHTMLTable(sourceCode, colClasses = 'character', stringsAsFactors = FALSE)[[1]][-1,]
   
   # Modify the 'Date Added' field
   submissions[,"Date Added"] <- as.character(as.Date(submissions[,"Date Added"], format='%d %b %Y'))
@@ -98,19 +96,14 @@ repeat {
   Encoding(results) <- "unknown"
   
   # Insert the results into database
+  timer <- Sys.time()
   dbWriteTable(conn=con, name="submissions", value=as.data.frame(results), append=TRUE, row.names=FALSE)
+  print(paste0('Results were inserted into database (took ', Sys.time()-timer, ' seconds) -----'))
   
   pageNo <- pageNo + 1
   # Stop if you are at the last page OR if not all results fetched from the current page were fresh 
   if(pageNo > numPages || nrow(results) < numResults){
     break;
   }
-}
-# Disconnect from database
+}# Disconnect from database, clear variables
 lapply(dbListConnections(dbDriver(drv="MySQL")), dbDisconnect)
-remove(con)
-remove(notif)
-remove(prog)
-remove(results)
-remove(subId)
-remove(submissions)
