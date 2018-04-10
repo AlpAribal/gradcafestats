@@ -1,0 +1,69 @@
+"majorId";"major";"rgx_match";"rgx_no_match"
+1;"Economics (no area specified)";"\\becon";"fin|metric|poli|agri|source|law|socio|work|\\bag"
+2;"Psychology (no area specified)";"(?=.*psyc)";"clinic|couns|social|exper|indus|organ|\\bi/?o\\b|foren|fact|human|schoo?lhist"
+3;"Psychology (Clinical)";"(?=.*psyc)(?=.*clinic)";"schoo?l"
+4;"Psychology (Counseling)";"(?=.*psyc)(?=.*counsel)";"schoo?l"
+5;"Psychology (Social)";"(?=.*psyc)(?=.*social)";NA
+6;"Psychology (Experimental)";"(?=.*psyc)(?=.*exper)";NA
+7;"Psychology (Industrial/Organizational)";"(?=.*psyc)(?=.*(?:indus|organ|\\bi/?o\\b))";NA
+8;"Computer Science";"(?=.*\\bcomp)(?=.*\\bsci)";"poli|elec|mat"
+9;"Communication Sciences & Disorders / Speech-Language Pathology";"speech|(?:(?=.*comm)(?=.*(?:sci|disor)))";NA
+10;"English (no area specified)";"english";"\\blit|creat|writ|rhet|compo"
+11;"English (Literature)";"(?=.*eng)(?=.*\\blit)";"creat|writ|rhet|elec"
+12;"English (Rhetoric and Composition)";"(?=.*eng)(?=.*(?:rhet|compo))";NA
+13;"Philosophy";"philo";NA
+14;"Audiology";"audio|\\bau.?d.?\\b";"arch|urban|desig|tech"
+15;"Sociology / Social Policy";"sociolo|(?:(?=.*soci)(?=.*polic))";"anth|manag|sci|org"
+16;"Social Work";"(?:(?=.*soci)(?=.*work))|\\bmsw\\b";NA
+17;"Mechanical Engineering";"(?=.*mech)(?=.*eng)";"aero|space|civil|elec|nucle|indus|env"
+18;"Mechanical & Aerospace Engineering";"(?=.*mech)(?=.*(?:aero|space))";NA
+19;"History";"history";"\\barts?\\b|design|psyc"
+20;"Mathematics (no area specified)";"math";"pure|appl|fin|speech|comp"
+21;"Mathematics (Pure)";"(?=.*math)(?=.*pure)";NA
+22;"Mathematics (Applied)";"(?=.*math)(?=.*appl)";NA
+23;"Mathematics (Financial)";"(?=.*math)(?=.*fin)";NA
+24;"Psychology (Forensic)";"(?=.*psyc)(?=.*foren)";NA
+25;"Psychology (Human Factors)";"(?=.*psyc)(?=.*human)(?=.*fact)";NA
+26;"Psychology (School)";"(?=.*psyc)(?=.*schoo?l)";"clin|child"
+27;"Art / Design History";"(?=.*hist)(?=.*art)";NA
+28;"Epidemiology";"epidemi";NA
+29;"Painting";"paint";NA
+30;"Marketing";"marketing";NA
+31;"Astronomy / Astrophysics";"\\bastronom|\\bastrophy";NA
+32;"Petroleum Engineering";"petrol";NA
+33;"Architecture";"architec";"info|comp"
+34;"Genetic Counseling";"(?=.*gene)(?=.*couns)";NA
+35;"Creative Writing (Fiction)";"(?=.*creat)(?=.*writ)(?=.*fiction)";"non?"
+36;"Chemical Engineering";"(?=.*chem)(?=.*eng)";"bio|mol|log|env"
+37;"Statistics";"statis";"bi|econ"
+38;"Biostatistics";"biostats";NA
+39;"Anthropology";"anthro";NA
+40;"Electrical (& Electronics) Engineering";"(?=.*\\belec)(?=.*eng)";"comp|infor|bio"
+41;"Biomedical Engineering (Bioengineering)";"(?:(?=.*biomed)(?=.*eng))|bioeng";"chem"
+42;"Neuroscience";"neurosci";NA
+43;"Accounting";"account";"fin"
+44;"Geology / Geophysics";"geolog|geophys";NA
+45;"Geography";"geograp";"anth|gender"
+46;"Photography";"photog";NA
+47;"Civil / Environmental Engineering";"(?=.*(?:civil|env))(?=.*eng)";NA
+48;"Occupational Therapy";"(?=.*occ?up)(?=.*ther)";NA
+49;"Creative Writing (Poetry)";"(?=.*creat)(?=.*writ)(?=.*poet)";NA
+50;"Sculpture";"sculpture";NA
+51;"Electrical Engineering and Computer Engineering / Science (ECE / EECE / EECS)";"(?:(?=.*elec)(?=.*comp)(?=.*(?:eng|sci)))|\\bece\\b|\\beecs\\b";"child|educ"
+52;"Biostatistics";"biostat";NA
+53;"International / Public Affairs";"(?=.*(?:public|inter))(?=.*affair)";NA
+54;"Linguistics";"\\blingu";"span|chin|asia|speec|german|slav"
+55;"Religion / Theology";"theolo|religi";NA
+56;"Oceanography";"oceano";NA
+57;"Mathematics and Computer Science";"(?=.*math)(?=.*comp)(?=.*sci)";NA
+58;"Psychology (School & Clinical Child)";"(?=.*psyc)(?=.*(?:clin|child))(?=.*schoo?l)";NA
+59;"Agricultural Economics";"(?=.*\\bag)(?=.*econ)";NA
+60;"Creative Writing (Non-fiction)";"(?=.*creat)(?=.*writ)(?=.*fiction)(?=.*no)";NA
+61;"Physics";"\\bphysic";"med|appl|eng|chem|bio|physician|therap|thearpy|heal|geo|pharma|oncology|nutri|activity"
+62;"Finance";"finance";"acco|econ|manag|bus|law|math"
+63;"Creative Writing (no area specified)";"(?=.*creat)(?=.*writ)";"fict|poet"
+64;"Journalism";"journal";NA
+65;"Political Science";"(?=.*politic)(?=.*sci)";"public|polic"
+66;"Public Policy";"(?=.*public)(?=.*polic)";"politic|sci|econ|busi|heal"
+67;"Political Science & Public Policy";"(?=.*politic)(?=.*sci)(?=.*public)(?=.*polic)";"econ|busi|heal"
+68;"Chemistry";"chemistry";"bio|med|teach"
