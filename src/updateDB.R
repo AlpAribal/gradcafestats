@@ -9,7 +9,7 @@ Sys.setlocale("LC_TIME", "C") # This is needed for proper date handling
 maxDB <- fread(input = '..\\data\\submissions.csv',
                sep = 'é',
                header = T,
-               #select = 'submissionId',
+               select = 'submissionId',
                colClasses = 'numeric',
                quote = '')
 maxDB <- max(maxDB)
