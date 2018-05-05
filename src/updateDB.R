@@ -6,17 +6,11 @@ require(RCurl)
 Sys.setlocale("LC_TIME", "C") # This is needed for proper date handling
 
 # Connect to the database and retrieve the last submission ID
-maxDB <- fread(input = '..\\data\\submissions.csv',
-               sep = 'é',
-               header = T,
-               select = 'submissionId',
-               colClasses = 'numeric',
-               quote = '')
-maxDB <- max(maxDB)
+maxDB <- as.numeric(fread(file = '..\\data\\maxDB.txt', colClasses = 'numeric'))
 if(!is.numeric(maxDB)){
   stop('maxDB is not a number')
 }
-print(paste0('Last submitId is:', maxDB))
+print(paste0('Last submitId is: ', maxDB))
 
 numPages <- 'unknown'
 pageNo <- 1
@@ -88,7 +82,7 @@ repeat {
   results <- results[as.numeric(results[,'submissionId']) > maxDB, ]
   
   # If there are no new submissions, stop
-  if(length(results) < 1 || nrow(results) < 1) {
+  if(!is.matrix(results) && !(is.vector(results) && length(results) > 0)) {
     print('There are not any new submissions!')
     break
   }
@@ -125,9 +119,12 @@ repeat {
               quote = F)
   print(paste0('Results were inserted into database (took ', Sys.time()-timer, ' seconds) -----'))
   
+  newMaxDB <- max(results[, 1], newMaxDB)
+  
   pageNo <- pageNo + 1
   # Stop if you are at the last page OR if not all results fetched from the current page were fresh 
   if(pageNo > numPages || nrow(results) < numResults){
     break;
   }
 }
+write.table(file = '..\\data\\maxDB.txt', x = newMaxDB, append = F, row.names = F, col.names = F, quote = F)
