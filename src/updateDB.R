@@ -2,20 +2,20 @@ require(data.table)
 require(XML)
 require(stringr)
 require(RCurl)
-#source("getSubmissions.R")
 Sys.setlocale("LC_TIME", "C") # This is needed for proper date handling
 
-# Connect to the database and retrieve the last submission ID
+# Load largest submissionId which is saved in a seperate file
 maxDB <- as.numeric(fread(file = '..\\data\\maxDB.txt', colClasses = 'numeric'))
 if(!is.numeric(maxDB)){
   stop('maxDB is not a number')
 }
-print(paste0('Last submitId is: ', maxDB))
+print(paste0('Largest submissionId is: ', maxDB))
+newMaxDB <- maxDB
 
 numPages <- 'unknown'
 pageNo <- 1
 repeat {
-  # Construct the page URL
+  # Construct page URL
   pageURL <- paste0('http://thegradcafe.com/survey/index.php?q=%28a*%7Cb*%7Cc*%7Cd*%7Ce*%7Cf*%7Cg*%7Ch*%7Ci*%7Cj*%7Ck*%7Cl*%7Cm*%7Cn*%7Co*%7Cp*%7Cq*%7Cr*%7Cs*%7Ct*%7Cu*%7Cv*%7Cw*%7Cx*%7Cy*%7Cz*%7C1*%7C2*%7C3*%7C4*%7C5*%7C6*%7C7*%7C8*%7C9*%7C0*%7C%28*%7C%29*%7C_*%29&t=a&o=&pp=250&p=',pageNo)
 
   # Download the page
@@ -25,7 +25,7 @@ repeat {
   sourceCode <- getURL(pageURL, .encoding="UTF8", curl = curlHandle, maxredirs = as.integer(20), followlocation = TRUE)
   print(paste0('----- Download of page #', pageNo, '(out of ', numPages,') is complete', ' (took ', Sys.time()-timer, ' seconds'))
   
-  # Fetch the total number of result pages
+  # Fetch total number of result pages
   pattern <- 'Showing <strong>\\d* results<\\/strong> over (\\d*) pages'
   numPages <- as.numeric(str_match(sourceCode, pattern)[,-1])
   
@@ -35,11 +35,11 @@ repeat {
     break
   }
   
-  # Extract the submissions from source code
+  # Extract submissions from source code
   timer <- Sys.time()
   submissions <- readHTMLTable(sourceCode, colClasses = 'character', stringsAsFactors = FALSE)[[1]][-1,]
   
-  # Modify the 'Date Added' field
+  # Modify 'Date Added' field
   submissions[,"Date Added"] <- as.character(as.Date(submissions[,"Date Added"], format='%d %b %Y'))
   
   # Seperate major, degree, and semester
@@ -78,7 +78,7 @@ repeat {
   numResults <- nrow(results)
   print(paste0('Parse complete (took ', Sys.time()-timer, ' seconds: ', numResults, ' results'))
   
-  # Filter results based on the last submission in the database
+  # Filter results based on the largest submissionId in the database
   results <- results[as.numeric(results[,'submissionId']) > maxDB, ]
   
   # If there are no new submissions, stop
@@ -127,4 +127,6 @@ repeat {
     break;
   }
 }
+
+# Save largest submissionId to a seperate file
 write.table(file = '..\\data\\maxDB.txt', x = newMaxDB, append = F, row.names = F, col.names = F, quote = F)
