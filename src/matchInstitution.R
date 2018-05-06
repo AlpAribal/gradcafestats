@@ -1,26 +1,30 @@
 require(data.table)
 require(stringr)
 
-test <- T
+TEST <- T
+FULL_DB_MATCH <- F
 start <- Sys.time()
 submissions <- fread(input = '..\\data\\submissions.csv',
                      sep = 'é',
                      header = T,
                      select = c('submissionId', 'institution'),
                      quote = '')
-
-matches <- fread(input = '..\\data\\matchInstitutions.csv',
-                 sep = 'é',
-                 header = T,
-                 quote = '')
-
 submissions[, institution := str_to_lower(institution)]
-uniqueInsts <- unique(setdiff(submissions$institution, matches$submissionInst))
+uniqueInsts <- unique(submissions$institution)
+
+if(!FULL_DB_MATCH){
+  matches <- fread(input = '..\\data\\matchInstitutions.csv',
+                   sep = 'é',
+                   header = T,
+                   quote = '')
+  
+  uniqueInsts <- unique(setdiff(uniqueInsts, matches$institution))
+}
 
 insts_all <- fread(input = '..\\data\\institutions.csv',
                    header = T,
                    quote = '"')
-if(test){
+if(TEST){
   #insts_all <- insts_all[(nrow(insts_all)-2):nrow(insts_all)]
   #insts_all <- insts_all[1:50]
 }
@@ -32,7 +36,7 @@ colnames(res) <- c('institution', 'matched_instId', insts_all[, instId])
 
 i <- 1
 repeat{
-  print(paste0('Inst #', i))
+  print(paste0('Inst #', i, '/', nrow(insts_all)))
   # Institution name should match rgx_match
   rgx <- insts_all[i , rgx_match]
   res_vec <- str_detect(string = uniqueInsts, pattern = rgx)
@@ -56,17 +60,20 @@ repeat{
 
 res <- res[, rSum := rowSums(res[,-(1:2)])]
 
-if(test){
-  res <- res[rSum > 0]
-  res <- merge(merge(submissions, res, by = 'submissionId'), insts_all[, .(instId, inst_name)], by = 'instId')
+if(TEST){
+  test_res <- res[rSum > 0 & rSum < 3, .(institution, matched_instId, rSum)]
+  test_res <- merge(insts_all[, .(instId, inst_name)], test_res, by.x = 'instId', by.y = 'matched_instId')
+  unmatched <- merge(res[rSum == 0, .(institution)], submissions[, .(institution)], by = 'institution', all = F)
+  unmatched <- unmatched[, .N, by = list(institution)]
+  setorder(unmatched, -N)
 } else{
-  res <- res[rSum==1, 1:2]
-  write.table(x = res,
+  write_res <- res[rSum==1 & matched_instId > 0, 1:2]
+  write.table(x = write_res,
               file = '..\\data\\matchInstitutions.csv',
-              append = T,
+              append = !FULL_DB_MATCH,
               sep = 'é',
               row.names = F,
-              col.names = F,
+              col.names = FULL_DB_MATCH,
               quote = F)
 }
 print(paste0('Finished @', Sys.time(), '. Took: ', Sys.time()-start))

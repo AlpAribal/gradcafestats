@@ -1,6 +1,10 @@
 "instId";"inst_name";"rgx_match";"rgx_no_match"
-0;"NIH";"\\bnih\\b";NA
-1;"Carnegie Mellon University (CMU)";"carnegie|mellon|\\bcmu\\b";"tepper"
+0;"NIH";"\bnih\b";NA
+-1;"NDSEG";"\bndseg\b";NA
+-2;"GRFP";"\bgrfp\b";NA
+-3;"NSF";"\bnsf\b";NA
+-4;"Other";"\bother\b";NA
+1;"Carnegie Mellon University (CMU)";"carnegie|mellon|\bcmu\b";"tepper"
 2;"Tepper Business School | Carnegie Mellon University";"tepper";NA
 3;"Stanford University";"stanford";"business|gsb"
 4;"Stanford Graduate School of Business | Stanford University";"(?=.*stanford)(?=.*(?:business|gsb))";NA
@@ -10,10 +14,10 @@
 8;"Johnson Graduate School of Management | Cornell University";"(?=.*cornell)(?=.*(?:management|johnson))";NA
 9;"Georgia Institute of Technology (Georgia Tech)";"(?:(?=.*georgia)(?=.*tech))|gatech";"business|scheller"
 10;"Scheller College of Business - Georgia Institute of Technology (Georgia Tech)";"(?=.*(?:(?:(?=.*georgia)(?=.*tech))|gatech))(?=.*(?:business|scheller))";NA
-11;"University of Washington, Seattle (UW)";"wash|(?:(?=.*\\buw\\b)(?=.*seat))";"wsu|stat|wustl|loui|\\bst\\b|\\bstl\\b|georg|gwu|wwu|ewu|argosy|west|cent|east|milwa|bothel|tacoma|steven|point|white|water|olin|american|river|fall|madi|wisc|eau|clair|foster|business"
-12;"Foster School of Business | University of Washington, Seattle (UW)";"(?=.*(?:wash|\\buw\\b|seat))(?=.*foster)";NA
-13;"Massachusetts Institute of Technology (MIT)";"\\bmit\\b|(?:(?=.*mass?a)(?=.*inst)(?=.*tech))";"rmit|sloan|joint|singapore"
-14;"Sloan School of Management | Massachusetts Institute of Technology (MIT)";"(?=.*\\bmit\\b)(?=.*sloan)";NA
+11;"University of Washington, Seattle (UW)";"wash|(?:(?=.*\buw\b)(?=.*seat))";"wsu|stat|wustl|loui|\bst\b|\bstl\b|georg|gwu|wwu|ewu|argosy|west|cent|east|milwa|bothel|tacoma|steven|point|white|water|olin|american|river|fall|madi|wisc|eau|clair|foster|business"
+12;"Foster School of Business | University of Washington, Seattle (UW)";"(?=.*(?:wash|\buw\b|seat))(?=.*foster)";NA
+13;"Massachusetts Institute of Technology (MIT)";"\bmit\b|(?:(?=.*mass?a)(?=.*inst)(?=.*tech))";"rmit|sloan|joint|singapore"
+14;"Sloan School of Management | Massachusetts Institute of Technology (MIT)";"(?=.*\bmit\b)(?=.*sloan)";NA
 15;"University of Massachusetts Amherst (UMass Amherst)";"amherst|u ?mass";"isenberg|boston"
 16;"Isenberg School of Management - University of Massachusetts Amherst (UMass Amherst)";"isenberg";NA
 17;"University of Michigan, Ann Arbor";"(?:(?=.*ann)(?=.*arbor))|(?:(?=.*uni)(?=.*mich))|umich";"state|west|cent|east|north|tech|michener|dear|flint|broad|ross"
@@ -22,38 +26,38 @@
 20;"McCombs School of Business - University of Texas at Austin (UT Austin)";"mccombs";NA
 21;"University of Pennsylvania (UPenn)";"(?:(?=.*penn)(?=.*uni)(?=.*of))|upenn|u penn";"wharton|state|psu"
 22;"The Wharton School | University of Pennsylvania (UPenn)";"wharton";NA
-23;"University of Southern California (USC)";"(?:(?=.*uni)(?=.*south)(?=.*cal))|\\busc\\b";"marshal|business|musc"
-24;"Marshall School of Business | University of Southern California (USC)";"(?=.*(?:(?:(?=.*uni)(?=.*south)(?=.*cal))|\\busc\\b))(?=.*marshal)";NA
-25;"University of Illinois Urbana-Champaign (UIUC)";"urbana|champaign|\\buiuc\\b";"business|gies"
-26;"Gies College of Business | University of Illinois Urbana-Champaign (UIUC)";"(?:(?=.*(?:urbana|\\buiuc\\b))(?=.*business))|gies";NA
-27;"University of Maryland, College Park (UMD)";"(?=.*maryland)|\\bumd\\b";"loyol|balti|\\bumbc?\\b|\\barts?\\b|robert|smith"
+23;"University of Southern California (USC)";"(?:(?=.*uni)(?=.*south)(?=.*cal))|\busc\b";"marshal|business|musc"
+24;"Marshall School of Business | University of Southern California (USC)";"(?=.*(?:(?:(?=.*uni)(?=.*south)(?=.*cal))|\busc\b))(?=.*marshal)";NA
+25;"University of Illinois Urbana-Champaign (UIUC)";"urbana|champaign|\buiuc\b";"business|gies"
+26;"Gies College of Business | University of Illinois Urbana-Champaign (UIUC)";"(?:(?=.*(?:urbana|\buiuc\b))(?=.*business))|gies";NA
+27;"University of Maryland, College Park (UMD)";"(?=.*maryland)|\bumd\b";"loyol|balti|\bumbc?\b|\barts?\b|robert|smith"
 28;"Robert H. Smith School of Business | University of Maryland, College Park (UMD)";"(?=.*smith)(?=.*business)";"queen|glasgow"
-29;"University of California, Los Angeles (UCLA)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?:(?=.*los)(?=.*angel)))|\\bucla\\b";"anders[oe]n|management|stat"
-30;"Anderson School of Management | University of California, Los Angeles (UCLA)";"(?=.*(?:(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?:(?=.*los)(?=.*angel)))|\\bucla\\b))(?=.*anders[oe]n)";NA
+29;"University of California, Los Angeles (UCLA)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?:(?=.*los)(?=.*angel)))|\bucla\b";"anders[oe]n|management|stat"
+30;"Anderson School of Management | University of California, Los Angeles (UCLA)";"(?=.*(?:(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?:(?=.*los)(?=.*angel)))|\bucla\b))(?=.*anders[oe]n)";NA
 31;"Columbia University";"columbia";"british|misso|district|chicago|carol|business|gsb"
 32;"Columbia Business School | Columbia University";"(?=.*columbia)(?=.*business)";"british|misso|district|chicago|carol"
-33;"Northeastern University (NEU)";"north ?easter|\\bneu\\b|\\bnu\\b";"neiu|ill?inois"
+33;"Northeastern University (NEU)";"north ?easter|\bneu\b|\bnu\b";"neiu|ill?inois"
 34;"Harvard University";"harvard";"business|hbs"
 35;"Harvard Business School | Harvard University";"(?:(?=.*harvard)(?=.*business))|hbs";NA
 36;"Purdue University";"purdue";"indiana|iupui|krannert|management"
 37;"Krannert School of Management | Purdue University";"(?:(?=.*purdue)(?=.*management))|krannert";"indiana|iupui"
-38;"Arizona State University (ASU)";"(?:(?=.*ariz)(?=.*stat))|\\basu\\b";"north|carey|business"
-39;"W. P. Carey School of Business | Arizona State University (ASU)";"(?:(?=.*(?:(?:(?=.*ariz)(?=.*stat))|\\basu\\b))(?=.*business))|carey";NA
-40;"University of California, San Diego (UCSD)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?:(?=.*san)(?=.*diego)))|\\bucsd\\b";"rady|management"
-41;"Rady School of Management | University of California, San Diego (UCSD)";"(?=.*(?:(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?:(?=.*san)(?=.*diego)))|\\bucsd\\b))(?=.*rady)";NA
+38;"Arizona State University (ASU)";"(?:(?=.*ariz)(?=.*stat))|\basu\b";"north|carey|business"
+39;"W. P. Carey School of Business | Arizona State University (ASU)";"(?:(?=.*(?:(?:(?=.*ariz)(?=.*stat))|\basu\b))(?=.*business))|carey";NA
+40;"University of California, San Diego (UCSD)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?:(?=.*san)(?=.*diego)))|\bucsd\b";"rady|management"
+41;"Rady School of Management | University of California, San Diego (UCSD)";"(?=.*(?:(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?:(?=.*san)(?=.*diego)))|\bucsd\b))(?=.*rady)";NA
 42;"University of Illinois at Chicago (UIC)";"(?:(?=.*ill?inois)(?=.*chicago))|uic";"liautaud|business"
 43;"Liautaud Graduate School of Business | University of Illinois at Chicago (UIC)";"(?=.*(?:(?:(?=.*ill?inois)(?=.*chicago))|uic))(?=.*(?:liataud|business))";NA
 44;"Northwestern University (NU)";"northwester";"kell?ogg?"
 45;"Kellogg School of Management | Northwestern University (NU)";"kell?ogg?";NA
 46;"Princeton University";"princeton";"theolo"
-47;"University of California, Berkeley (UC Berkeley / UCB)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*berk))|\\bucb\\b|berkeley";"haas|business"
-48;"Haas School of Business | University of California, Berkeley (UC Berkeley / UCB)";"(?=.*(?:(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*berk))|\\bucb\\b|berkeley))(?=.*(?:haas|business))";NA
-49;"University of California, Davis (UC Davis / UCD)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*davis))|\\bucd\\b";"gsm|management"
-50;"Graduate School of Management | University of California, Davis (UC Davis / UCD)";"(?=.*(?:(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*davis))|\\bucd\\b))(?=.*(?:management|gsm))";NA
-51;"University of California, Santa Barbara (UC Santa Barbara / UCSB)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*barb))|\\bucsb\\b";NA
-52;"University of California, Santa Cruz (UC Santa Cruz / UCSC)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*cruz))|\\bucsc\\b";NA
-53;"University of California, Irvine (UC Irvine / UCI)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*irv))|\\buci\\b";"paul|merage|business"
-54;"Paul Merage School Of Business | University of California, Irvine (UC Irvine / UCI)";"(?=.*(?:(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*irv))|\\buci\\b))(?=.*(?:merage|business))";NA
+47;"University of California, Berkeley (UC Berkeley / UCB)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*berk))|\bucb\b|berkeley";"haas|business"
+48;"Haas School of Business | University of California, Berkeley (UC Berkeley / UCB)";"(?=.*(?:(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*berk))|\bucb\b|berkeley))(?=.*(?:haas|business))";NA
+49;"University of California, Davis (UC Davis / UCD)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*davis))|\bucd\b";"gsm|management"
+50;"Graduate School of Management | University of California, Davis (UC Davis / UCD)";"(?=.*(?:(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*davis))|\bucd\b))(?=.*(?:management|gsm))";NA
+51;"University of California, Santa Barbara (UC Santa Barbara / UCSB)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*barb))|\bucsb\b";NA
+52;"University of California, Santa Cruz (UC Santa Cruz / UCSC)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*cruz))|\bucsc\b";NA
+53;"University of California, Irvine (UC Irvine / UCI)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*irv))|\buci\b";"paul|merage|business"
+54;"Paul Merage School Of Business | University of California, Irvine (UC Irvine / UCI)";"(?=.*(?:(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*irv))|\buci\b))(?=.*(?:merage|business))";NA
 55;"University of Wisconsin, Madison (UW Madison)";"(?=.*(?:wisc|uw))(?=.*madi)";"steven|point|james|business|wsb"
 56;"Wisconsin School of Business | University of Wisconsin, Madison (UW Madison)";"(?=.*(?:wisc|uw))(?=.*madi)(?=.*(?:business|wsb))";NA
 57;"University of Virginia (UVA)";"(?=.*uni)(?=.*virgin)";"common|tech|state|west|east|inst|consort|darden|business"
@@ -79,9 +83,9 @@
 77;"Smeal College of Business | Pennsylvania State University (PSU)";"smeal";NA
 78;"Emory University";"emory";"goizueta|business"
 79;"Goizueta Business School | Emory University";"goizueta";NA
-80;"University of North Carolina at Chapel Hill (UNC Chapel Hill)";"chapel|\\bunc\\b";"color|gree?|unc g|char|lot|wilm|kenan|flagler|business"
+80;"University of North Carolina at Chapel Hill (UNC Chapel Hill)";"chapel|\bunc\b";"color|gree?|unc g|char|lot|wilm|kenan|flagler|business"
 81;"Kenan-Flagler Business School | University of North Carolina at Chapel Hill (UNC Chapel Hill)";"kenan|flagler";NA
-82;"California Institute of Technology (Caltech)";"(?:(?=.*cali)(?=.*insti)(?=.*tech))|\\bcaltech\\b";NA
+82;"California Institute of Technology (Caltech)";"(?:(?=.*cali)(?=.*insti)(?=.*tech))|\bcaltech\b";NA
 83;"University of Colorado Boulder";"boulder";"mine|leeds|business"
 84;"Leeds School of Business | University of Colorado Boulder";"leeds";NA
 85;"University of Oregon";"oregon";"pacific|stat|ohsu|(?:(?=.*health)(?=.*science))|business"
@@ -89,17 +93,17 @@
 87;"Oregon State University (OSU)";"(?=.*oregon)(?=.*stat)";"pacific|ohsu|(?:(?=.*health)(?=.*science))|business"
 88;"College of Business | Oregon State University (OSU)";"(?=.*oregon)(?=.*stat)(?=.*busines)";"pacific|ohsu|(?:(?=.*health)(?=.*science))"
 89;"Portland State University (PSU)";"(?=.*portland)(?=.*stat)";"pacific|ohsu|(?:(?=.*health)(?=.*science))"
-90;"Rice University";"\\brice\\b";"jones|business"
+90;"Rice University";"\brice\b";"jones|business"
 91;"Jones Graduate School of Business | Rice University";"(?=.*rice)(?=.*jones)";NA
 92;"Ohio State University (OSU)";"(?=.*ohio)(?=.*stat)";"fisher|business"
 93;"Fisher College of Business - Ohio State University (OSU)";"fisher|(?:(?=.*ohio)(?=.*stat)(?=.*business))";"oklahoma"
 94;"Temple University";"temple";"fox|business"
-95;"Fox School of Business | Temple University";"\\bfox\\b";"sam|george"
+95;"Fox School of Business | Temple University";"\bfox\b";"sam|george"
 96;"Vanderbilt University";"vander";"owen|management"
 97;"George Washington University (GW)";"(?=.*georg)(?=.*wash)";"warren|brown"
-98;"University of Rochester (Rochester)";"rochester";"minn?e|tech|\\brit\\b|nazar|simon|business"
+98;"University of Rochester (Rochester)";"rochester";"minn?e|tech|\brit\b|nazar|simon|business"
 99;"Simon Business School | University of Rochester (Rochester)";"(?=.*simon)(?:(?=.*(?:rochester|business)))";"fra|bolivar"
-100;"University of Oxford";"oxford";"miami|\\bsa.+d\\b|business|sbs"
+100;"University of Oxford";"oxford";"miami|\bsa.+d\b|business|sbs"
 101;"Said Business School | University of Oxford";"said|(?:(?=.*oxford)(?=.*sbs))";NA
 102;"McGill University";"mcgill";"desau|management"
 103;"Desautels Faculty of Management | McGill University";"desau";NA
@@ -107,7 +111,7 @@
 105;"Carroll School of Management | Boston College (BC)";"(?=.*boston)(?=.*carr?oll?)";"john"
 106;"Syracuse University";"syracus";"suny|med|whitman|management"
 107;"Whitman School of Management | Syracuse University";"whitman";NA
-108;"University of British Columbia (UBC)";"(?:(?=.*brit)(?=.*columb))|\\bubc\\b";"okan|sauder|business"
+108;"University of British Columbia (UBC)";"(?:(?=.*brit)(?=.*columb))|\bubc\b";"okan|sauder|business"
 109;"Sauder School of Business | University of British Columbia (UBC)";"sauder";NA
 110;"University of British Columbia Okanagan (UBCO)";"(?=.*brit)(?=.*columb)(?=.*okan)";NA
 111;"State University of New Jersey (Rutgers University)";"rutgers|(?:(?=.*stat)(?=.*new)(?=.*jersey))";"camden|newark|business"
@@ -128,8 +132,8 @@
 126;"Western Kentucky University (WKU)";"(?=.*kentucky)(?=.*west)";NA
 127;"Eastern Kentucky University (EKU)";"(?=.*kentucky)(?=.*east)";NA
 128;"Northern Kentucky University (NKU)";"(?=.*kentucky)(?=.*north)";NA
-129;"Washington University in St. Louis (WUSTL)";"((?=.*wash)(?=.*\\blouis\\b))|wustl";"olin|business"
-130;"Olin Business School | Washington University in St. Louis (WUSTL)";"\\bolin\\b";NA
+129;"Washington University in St. Louis (WUSTL)";"((?=.*wash)(?=.*\blouis\b))|wustl";"olin|business"
+130;"Olin Business School | Washington University in St. Louis (WUSTL)";"\bolin\b";NA
 131;"University of Waterloo";"waterloo?";NA
 132;"University of Notre Dame (ND)";"(?=.*notr)(?=.*dam)";"namur"
 133;"University of Utah";"utah";"stat|eccles|business"
@@ -137,14 +141,14 @@
 135;"Utah State University (USU)";"(?=.*utah)(?=.*stat)";"huntsman"
 136;"Brandeis University";"brandeis";NA
 137;"City University of New York (CUNY)";"cuny|(?:(?=.*city)(?=.*uni)(?=.*new)(?=.*york))";NA
-138;"New York University (NYU)";"(?:(?=.*new)(?=.*york))|\\bnyu\\b";"cuny|city|suny|state|buffalo|academy|medical|syracuse|dhabi|saint|nysid|triangle|stern"
-139;"Stern School of Business | New York University (NYU)";"\\bstern\\b";NA
-140;"University of Florida (UFL)";"\\bflorida\\b|\\bufl\\b";"cent|south|west|north|stat|\\bfsu\\b|tech|inter|nation|atlan|scripp|agri|mech|\\bfamu\\b|gulf|gannon|miami|warring|business"
+138;"New York University (NYU)";"(?:(?=.*new)(?=.*york))|\bnyu\b";"cuny|city|suny|state|buffalo|academy|medical|syracuse|dhabi|saint|nysid|triangle|stern"
+139;"Stern School of Business | New York University (NYU)";"\bstern\b";NA
+140;"University of Florida (UFL)";"\bflorida\b|\bufl\b";"cent|south|west|north|stat|\bfsu\b|tech|inter|nation|atlan|scripp|agri|mech|\bfamu\b|gulf|gannon|miami|warring|business"
 141;"Warrington College of Business | University of Florida (UFL)";"warrington";NA
 142;"University of Arizona";"arizona";"north|south|stat|eller|management"
-143;"Eller College of Management | University of Arizona";"\\beller\\b";NA
-144;"University of South Florida (USF)";"(?:(?=.*south)(?=.*florida))|\\busf\\b";"san|fran|nova|peter|sarasota|manat"
-145;"Florida State University (FSU)";"(?=.*florida)(?=.*stat)|\\bfsu\\b";"san|fran|cent|south|west|north|atlan"
+143;"Eller College of Management | University of Arizona";"\beller\b";NA
+144;"University of South Florida (USF)";"(?:(?=.*south)(?=.*florida))|\busf\b";"san|fran|nova|peter|sarasota|manat"
+145;"Florida State University (FSU)";"(?=.*florida)(?=.*stat)|\bfsu\b";"san|fran|cent|south|west|north|atlan"
 146;"University of Delaware";"delaw";"stat"
 147;"Delaware State University";"(?=.*delaw)(?=.*stat)";NA
 148;"University of Connecticut (UConn)";"conn";"stat|sout|cent"
@@ -154,30 +158,30 @@
 152;"DeGroote School of Business | McMaster University";"degroot";NA
 153;"Auburn University";"auburn";"mont"
 154;"Fordham University";"fordham";NA
-155;"University of Kent";"\\bkent\\b";"state|noac"
-156;"Kent State University";"(=?.*\\bkent\\b)(=?.*stat)";NA
-157;"Koç University";"\\bkoç\\b|\\bkoc\\b";NA
+155;"University of Kent";"\bkent\b";"state|noac"
+156;"Kent State University";"(=?.*\bkent\b)(=?.*stat)";NA
+157;"Koç University";"\bkoç\b|\bkoc\b";NA
 158;"Bilkent University";"bilkent";NA
 159;"Clemson University";"clemson";NA
 160;"Drexel University";"drexel";"le ?bow|business"
 161;"LeBow College of Business | Drexel University";"le ?bow|(?:(?=.*drexel)(?:(?=.*le|bow)))";NA
 162;"Wayne State University";"wayne";"purdue|burg"
 163;"Baylor University";"baylor";"med|bcm"
-164;"Baylor College of Medicine (BCM)";"(?:(=?.*baylor)(=?.*med))|\\bbcm\\b";NA
+164;"Baylor College of Medicine (BCM)";"(?:(=?.*baylor)(=?.*med))|\bbcm\b";NA
 165;"George Mason University";"(=?.*georg)(=?.*mason)";NA
 166;"Rush University";"rush";NA
 167;"Pratt Institute";"pratt";NA
 168;"EPFL";"epfl";NA
-169;"ETH Zurich";"\\beth\\b";NA
+169;"ETH Zurich";"\beth\b";NA
 170;"Emerson College";"emerson";NA
-171;"North Carolina State University (NC State)";"(?:(?:(?:(?=.*north)(?=.*carol))|(?=.*\\bnc\\b))(?=.*state))|\\bncsu\\b";"a&t|agri|tech"
-172;"University of Georgia (UGA)";"georgia|\\buga\\b";"tech|stat|\\bgsu\\b|west|south|rea?gen|health|court|colleg|terry|business"
+171;"North Carolina State University (NC State)";"(?:(?:(?:(?=.*north)(?=.*carol))|(?=.*\bnc\b))(?=.*state))|\bncsu\b";"a&t|agri|tech"
+172;"University of Georgia (UGA)";"georgia|\buga\b";"tech|stat|\bgsu\b|west|south|rea?gen|health|court|colleg|terry|business"
 173;"Terry College of Business | University of Georgia (UGA)";"terry";NA
 174;"University of Cambridge";"cambridge";"oxford"
-175;"Georgia State University (GSU)";"(=?.*georgia)(=?.*stat)";"&|\\bgcsu\\b|robin|business"
+175;"Georgia State University (GSU)";"(=?.*georgia)(=?.*stat)";"&|\bgcsu\b|robin|business"
 176;"J. Mack Robinson College of Business | Georgia State University (GSU)";"robinson";NA
-177;"University of Kansas";"\\bkansas\\b";"state|miss?o|\\bkumc\\b|medic"
-178;"Kansas State University";"(=?.*\\bkansas\\b)(=?.*stat)";NA
+177;"University of Kansas";"\bkansas\b";"state|miss?o|\bkumc\b|medic"
+178;"Kansas State University";"(=?.*\bkansas\b)(=?.*stat)";NA
 179;"University of Arkansas";"arkansas";"cent|tech|stat|little|rock|uams|med"
 181;"Arkansas State University";"(=?.*arkansas)(=?.*stat)";NA
 182;"University of Cincinnati";"cincin";"hebrew"
@@ -185,10 +189,10 @@
 184;"Stony Brook University (SUNY Stony Brook)";"(=?.*ston)(=?.*broo?k)";NA
 185;"Simon Fraser University (SFU)";"(=?.*simon)(=?.*fraser)";NA
 186;"Lehigh University";"lehigh";NA
-187;"Bowling Green State University";"(?:(=?.*bowling)(=?.*green))|\\bbgsu\\b";NA
+187;"Bowling Green State University";"(?:(=?.*bowling)(=?.*green))|\bbgsu\b";NA
 188;"Tulane University";"tulane";NA
 189;"University of Memphis";"memphis";NA
-190;"University of Denver";"denver";"ansch|color|\\bcu\\b|\\buc\\b|metro|stat"
+190;"University of Denver";"denver";"ansch|color|\bcu\b|\buc\b|metro|stat"
 191;"University of Colorado, Anschutz (CU Anschutz)";"anschutz";NA
 192;"University of Colorado Denver";"(=?.*(?:color|uc|cu))(=?.*denver)";"ansch"
 193;"Marquette University";"marq";NA
@@ -196,11 +200,11 @@
 195;"Colorado State University";"(=?.*color)(=?.*stat)";NA
 196;"Dartmouth College";"dartmouth";"mass?a"
 197;"American University";"american";"paris|pan|cairo|gilder|beirut|film|india|argosy|rome|richmond|catholic|meteor|iber|conservatory|tech"
-198;"University of Houston (UH)";"houston";"\\bsam\\b|stat|texas|\\but\\b|bauer|lake|clear"
+198;"University of Houston (UH)";"houston";"\bsam\b|stat|texas|\but\b|bauer|lake|clear"
 199;"C. T. Bauer College of Business | University of Houston (UH)";"bauer";NA
-200;"University of Houston–Clear Lake";"(=?.*(?:houston|\\buh\\b))(=?.*(?:clear|lake))";NA
-201;"University of South Carolina";"(?=.*south\\b)(?=.*carol)";"medi|stat|darla|moo?re|business"
-202;"Darla Moore School of Business | University of South Carolina";"darla|(?:(?=.*moo?re\\b)(?=.*carol))";NA
+200;"University of Houston–Clear Lake";"(=?.*(?:houston|\buh\b))(=?.*(?:clear|lake))";NA
+201;"University of South Carolina";"(?=.*south\b)(?=.*carol)";"medi|stat|darla|moo?re|business"
+202;"Darla Moore School of Business | University of South Carolina";"darla|(?:(?=.*moo?re\b)(?=.*carol))";NA
 203;"University of Alberta";"alberta";"design"
 204;"Western Michigan University";"(?=.*mich)(?=.*west)";NA
 205;"Eastern Michigan University";"(?=.*mich)(?=.*east)";NA
@@ -208,57 +212,57 @@
 207;"Michigan Technological University";"(?=.*mich)(?=.*tech)";NA
 208;"Northern Michigan University";"(?=.*mich)(?=.*north)";NA
 209;"Mercy College";"mercy";"detr|hurst"
-210;"Rensselaer Polytechnic Institute (RPI)";"(?=.*rens)(?=.*poly)|\\brpi\\b";NA
+210;"Rensselaer Polytechnic Institute (RPI)";"(?=.*rens)(?=.*poly)|\brpi\b";NA
 211;"Washington State University";"(?=.*wash)(?=.*stat)";"east|west"
 212;"Eastern Washington University";"(?=.*wash)(?=.*east)";NA
 213;"Western Washington University";"(?=.*wash)(?=.*west)";NA
 214;"University of Central Florida";"(?=.*florida)(?=.*cent)";NA
 215;"Florida Atlantic University";"(?=.*florida)(?=.*atlantic)";NA
 216;"Florida International University";"(?=.*florida)(?=.*inter)";NA
-217;"Miami University";"(?=.*miami)(?=.*(?:ohio|oxford))";"nova|albizu|flor|\\bfl\\b|(?=.*\\bof\\b)^(?!.*ohio)"
+217;"Miami University";"(?=.*miami)(?=.*(?:ohio|oxford))";"nova|albizu|flor|\bfl\b|(?=.*\bof\b)^(?!.*ohio)"
 218;"University of Miami";"(?=.*miami)(?=.*(of|florida))";"ohio|oxford"
 219;"Indiana University Bloomington";"bloo?min|indiana";"purdue|uipui|polis|kelley|business"
 220;"Kelley School of Business | Indiana University Bloomington";"kelley";NA
-221;"Indiana University–Purdue University Indianapolis (IUPUI)";"(?:(?=.*indiana)(?=.*purdue))|\\buipui\\b";NA
+221;"Indiana University–Purdue University Indianapolis (IUPUI)";"(?:(?=.*indiana)(?=.*purdue))|\buipui\b";NA
 222;"University of New Mexico";"(?=.*new)(?=.*mexico)";"east|west|stat|tech|highland"
 223;"Eastern New Mexico University";"(?=.*east)(?=.*new)(?=.*mexico)";NA
 224;"Western New Mexico University";"(?=.*west)(?=.*new)(?=.*mexico)";NA
 225;"New Mexico Highlands University";"(?=.*high ?land)(?=.*new)(?=.*mexico)";NA
 226;"Hofstra University";"hofstra";NA
 227;"Adelphi University";"adelphi";"phila"
-228;"Texas A&M University (TAMU)";"(?:(?=.*texas)(?=.*a ?& ?m))|\\btamu\\b";"king|corp|chris|healt|\\bhsc\\b|galv|west|mays"
-229;"Texas A&M University–Kingsville (TAMUK)";"(?:(?=.*texas)(?=.*a ?& ?m)(?=.*king))|\\btamuk\\b";"corp|chris|healt|\\bhsc\\b|galv|west|mays"
-230;"Texas A&M University–Corpus Christi (TAMUCC)";"(?:(?=.*texas)(?=.*a ?& ?m)(?=.*(?:corp|chris)))|\\btamucc\\b";"king|healt|\\bhsc\\b|galv|west|mays"
-231;"Texas A&M Health Science Center";"(?=.*texas)(?=.*a ?& ?m)(?=.*(?:healt|\\bhsc\\b))";"king|corp|chris|galv|west|mays"
+228;"Texas A&M University (TAMU)";"(?:(?=.*texas)(?=.*a ?& ?m))|\btamu\b";"king|corp|chris|healt|\bhsc\b|galv|west|mays"
+229;"Texas A&M University–Kingsville (TAMUK)";"(?:(?=.*texas)(?=.*a ?& ?m)(?=.*king))|\btamuk\b";"corp|chris|healt|\bhsc\b|galv|west|mays"
+230;"Texas A&M University–Corpus Christi (TAMUCC)";"(?:(?=.*texas)(?=.*a ?& ?m)(?=.*(?:corp|chris)))|\btamucc\b";"king|healt|\bhsc\b|galv|west|mays"
+231;"Texas A&M Health Science Center";"(?=.*texas)(?=.*a ?& ?m)(?=.*(?:healt|\bhsc\b))";"king|corp|chris|galv|west|mays"
 232;"Mays Business School - Texas A&M University (TAMU)";"mays";NA
-233;"University of Texas Medical Branch, Galveston";"(?:(?=.*texas)(?=.*med)(?=.*bran))|galveston|\\butmb\\b";NA
+233;"University of Texas Medical Branch, Galveston";"(?:(?=.*texas)(?=.*med)(?=.*bran))|galveston|\butmb\b";NA
 234;"University of Calgary";"calgary";"haskay|business"
 235;"Haskayne School of Business | University of Calgary";"haskayne";NA
 236;"Ohio University";"ohio";"stat|north|miami|dayton"
-237;"Northeast Ohio AuD Consortium";"(?:(?=.*north)(?=.*ohio)(?=.*aud))|\\bnoac\\b";NA
-238;"London School of Economics and Political Science (LSE)";"(?:(?=.*london)(?=.*sch)(?=.*econ))|\\blse\\b";NA
+237;"Northeast Ohio AuD Consortium";"(?:(?=.*north)(?=.*ohio)(?=.*aud))|\bnoac\b";NA
+238;"London School of Economics and Political Science (LSE)";"(?:(?=.*london)(?=.*sch)(?=.*econ))|\blse\b";NA
 239;"Imperial College London";"imperial";"academy"
-240;"University College London (UCL)";"(?:(?=.*uni)(?=.*col)(?=.*london))|\\bucl\\b";"king|comm?un"
-241;"London Business School";"(?:(?=.*london)(?=.*bus)(?=.*sch))|\\blbs\\b";NA
-242;"Sciences Po (Paris Institute of Political Studies)";"(?=.*scien)(?=.*\\bpo\\b)";NA
+240;"University College London (UCL)";"(?:(?=.*uni)(?=.*col)(?=.*london))|\bucl\b";"king|comm?un"
+241;"London Business School";"(?:(?=.*london)(?=.*bus)(?=.*sch))|\blbs\b";NA
+242;"Sciences Po (Paris Institute of Political Studies)";"(?=.*scien)(?=.*\bpo\b)";NA
 243;"University of Western Ontario (UWO)";"(?=.*west)(?=.*ontario)";"richard|ivey|business"
 244;"Richard Ivey Business School | University of Western Ontario (UWO)";"(?=.*ivey)(?=.*(?:richard|ontario|business))";NA
 245;"Ryerson University";"ryerson";NA
 246;"West Virginia University";"(?=.*west)(?=.*virgin)";NA
-247;"University of California, San Francisco (UCSF)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*fran))|\\bucsf\\b";NA
+247;"University of California, San Francisco (UCSF)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*fran))|\bucsf\b";NA
 248;"Carleton University";"carleton";"sprott"
 249;"Sprott School of Business | Carleton University";"sprott";NA
 250;"University of Ottawa";"ottawa";"carl|telfer"
 251;"Telfer School of Management | University of Ottawa";"telfer";NA
 252;"University of North Texas";"(?=.*north)(?=.*texas)";NA
-253;"King Abdullah University of Science and Technology (KAUST)";"(?:(?=.*king)(?=.*abdul))|\\bkaust\\b";NA
-254;"Case Western Reserve University (CWRU)";"(?:(?=.*case)(?=.*west))|\\bcwru\\b";"weat|head"
+253;"King Abdullah University of Science and Technology (KAUST)";"(?:(?=.*king)(?=.*abdul))|\bkaust\b";NA
+254;"Case Western Reserve University (CWRU)";"(?:(?=.*case)(?=.*west))|\bcwru\b";"weat|head"
 255;"Weatherhead School Of Management | Case Western Reserve University (CWRU)";"weather ?head";NA
 256;"INSEAD";"insead";NA
 257;"University of Akron";"akron";"noac"
 258;"Montclair State University";"montclair";NA
-259;"University of California, Riverside (UC Riverside / UCR)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*(?:river|side)))|\\bucr\\b";NA
-260;"Long Island University, Post (LIU Post / C.W. Post)";"\\bpost\\b";NA
+259;"University of California, Riverside (UC Riverside / UCR)";"(?:(?:(?:(?=.*uni)(?=.*cali))|(?=.*uc))(?=.*(?:river|side)))|\bucr\b";NA
+260;"Long Island University, Post (LIU Post / C.W. Post)";"\bpost\b";NA
 261;"Claremont Graduate University";"claremont";NA
 262;"Old Dominion University (ODU)";"dominion?";NA
 263;"James Madison University";"(?=.*james)(?=.*madison)";NA
@@ -266,7 +270,7 @@
 265;"University of Vermont";"vermont";"law|vcfa|(?:(?=.*fine)(?=.*art))"
 266;"Vermont Law School";"(?=.*vermont)(?=.*law)";NA
 267;"Vermont College of Fine Arts";"(?=.*vermont)(?=.*fine)(?=.*art)";NA
-268;"Louisiana State University";"(?:(?=.*louisiana)(?=.*stat))|\\blsu\\b";"south|monro|port|new|orlean|health|hsc"
+268;"Louisiana State University";"(?:(?=.*louisiana)(?=.*stat))|\blsu\b";"south|monro|port|new|orlean|health|hsc"
 269;"Louisiana State University Health Sciences Center New Orleans (LSUHSC)";"(?:(?:(?=.*louisiana)(?=.*stat))|(?=.*lsu))(?=.*(?:hsc|health))";"port"
 270;"Louisiana State University Health Sciences Center Shreveport";"(?:(?:(?=.*louisiana)(?=.*stat))|(?=.*lsu))(?=.*(?:hsc|health))(?=.*port)";NA
 271;"Louisiana State University Shreveport";"(?=(?:(?=.*louisiana)(?=.*stat))|(?=.*lsu))(?=.*port)";"health|hsc"
@@ -274,7 +278,7 @@
 273;"Louisiana Tech University";"(?=.*louisiana)(?=.*tech)";NA
 274;"University of Louisiana at Lafayette";"(?=.*louisiana)(?=.*fayet)";NA
 275;"University of Louisville";"louisville";NA
-276;"Nova Southeastern University";"\\bnova\\b";NA
+276;"Nova Southeastern University";"\bnova\b";NA
 277;"University of Wisconsin–Milwaukee";"(?=.*wiscon)(?=.*milwa)";NA
 278;"Illinois State University";"(?=.*ill?inois)(?=.*stat)";"sout|nort|east"
 279;"Northern Illinois University";"(?=.*ill?inois)(?=.*north)";"sout|east|stat"
@@ -283,24 +287,24 @@
 282;"University of Wyoming";"wyoming";NA
 283;"Radford University";"radford";NA
 284;"Dalhousie University";"dalhous";NA
-285;"Kean University";"\\bkeane?\\b";NA
+285;"Kean University";"\bkeane?\b";NA
 286;"Villanova University";"villanova";NA
-287;"La Salle University";"\\bsalle\\b";NA
+287;"La Salle University";"\bsalle\b";NA
 288;"Chapman University";"chapman";NA
-289;"University at Albany - State University of New York (SUNY Albany)";"\\balbany\\b";NA
+289;"University at Albany - State University of New York (SUNY Albany)";"\balbany\b";NA
 290;"University of Massachusetts Boston (UMass Boston)";"(?=.*mass)(?=.*boston)";NA
 291;"Molloy College";"molloy";NA
 292;"Binghamton University - State University of New York (SUNY Binghamton)";"binghamp?ton";NA
 293;"Wake Forest University";"(?=.*wake)(?=.*forest)";NA
-294;"Xavier University";"xavier";"\\bst\\b|sain"
-295;"Saint Xavier University";"(?=.*(?:\\bst\\b|sain))(?=.*xavier)";NA
+294;"Xavier University";"xavier";"\bst\b|sain"
+295;"Saint Xavier University";"(?=.*(?:\bst\b|sain))(?=.*xavier)";NA
 296;"Concordia University";"concordia";"john|molson|jmsb"
 297;"John Molson School of Business | Concordia University";"(?=.*concor)(?=.*molson)";NA
-298;"Clark University";"\\bclark\\b";"lewis|atlanta"
+298;"Clark University";"\bclark\b";"lewis|atlanta"
 299;"Lewis & Clark College";"(?=.*lewis)(?=.*clark)";NA
 300;"Clark Atlanta University";"(?=.*atlanta)(?=.*clark)";NA
 301;"Clarkson University";"clarkson";NA
-302;"University of Texas at Dallas (UT Dallas / UTD)";"(?:(?=.*(?:texas|\\but\\b))(?=.*dallas))|\\butd\\b";"south|nav|jindal|jsom|management"
+302;"University of Texas at Dallas (UT Dallas / UTD)";"(?:(?=.*(?:texas|\but\b))(?=.*dallas))|\butd\b";"south|nav|jindal|jsom|management"
 303;"Naveen Jindal School of Management | University of Texas at Dallas (UT Dallas / UTD)";"naveen|jindal";NA
 304;"Duquesne University";"duquesn";NA
 305;"Gallaudet University";"gallaudet";NA
@@ -329,8 +333,8 @@
 328;"University of York";"(?=.*york)(?=.*of)";"new|canada|toronto|schulic"
 329;"York University";"york";"of|new|uk|schulic"
 330;"Schulich School of Business | York University";"schulic";NA
-331;"Pacific University";"pacific";"azusa|palo|relig|of|seat|stock|hawai|north|west|luther|stat|\\bpgsp\\b|psyc"
-332;"University of the Pacific";"(?=.*pacific)(?=.*\\bof\\b)";"azusa|palo|relig|seat|\\bor\\b|oregon|hawai|north|west|luther|stat|\\bpgsp\\b|psyc"
+331;"Pacific University";"pacific";"azusa|palo|relig|of|seat|stock|hawai|north|west|luther|stat|\bpgsp\b|psyc"
+332;"University of the Pacific";"(?=.*pacific)(?=.*\bof\b)";"azusa|palo|relig|seat|\bor\b|oregon|hawai|north|west|luther|stat|\bpgsp\b|psyc"
 333;"Seattle Pacific University";"(?=.*pacific)(?=.*seat)";NA
 334;"Azusa Pacific University";"azusa";NA
 335;"Pacific Western University";"(?=.*pacific)(?=.*west)";"north"
@@ -342,13 +346,27 @@
 341;"Loyola University Chicago";"(?=.*loyola)(?=.*chic)";NA
 342;"Loyola University Maryland";"(?=.*loyola)(?=.*(?:maryland|balti))";NA
 343;"Loyola Marymount University";"(?=.*loyola)(?=.*marymoun)";NA
-344;"Saint Louis University";"(?=.*(?:\\bst\\b|sain))(?=.*louis)";"wash|ton|\\bwu\\b|mis?so"
+344;"Saint Louis University";"(?=.*(?:\bst\b|sain))(?=.*louis)";"wash|ton|\bwu\b|mis?so"
 347;"Queens University of Charlotte";"(?=.*queen)(?=.*char)";NA
-348;"San Jose State University";"(?:(?=.*\\bsan\\b)(?=.*\\bjose\\b))|\\bsjsu\\b";NA
-349;"University of Rhode Island";"(?=.*rhod)(?=.*island)";"design|\\brisd\\b"
-350;"Rhode Island School of Design";"(?:(?=.*rhod)(?=.*island)(?=.*design))|\\brisd\\b";NA
+348;"San Jose State University";"(?:(?=.*\bsan\b)(?=.*\bjose\b))|\bsjsu\b";NA
+349;"University of Rhode Island";"(?=.*rhod)(?=.*island)";"design|\brisd\b"
+350;"Rhode Island School of Design";"(?:(?=.*rhod)(?=.*island)(?=.*design))|\brisd\b";NA
 351;"East Carolina University";"(?=.*east)(?=.*carolin)";NA
 352;"Western Carolina University";"(?=.*west)(?=.*carolin)";NA
 353;"North Carolina Central University";"(?=.*north)(?=.*carolin)(?=.*cent)";NA
-354;"University of North Carolina at Greensboro (UNCG)";"(?:(?=.*north)(?=.*carolin)(?=.*gree?n))|\\buncg\\b";"a ?& ?t|agri|tech"
+354;"University of North Carolina at Greensboro (UNCG)";"(?:(?=.*north)(?=.*carolin)(?=.*gree?n))|\buncg\b";"a ?& ?t|agri|tech"
 355;"South Carolina State University";"(?=.*south)(?=.*carolin)(?=.*stat)";NA
+356;"University of Oklahoma";"\bokla";"cent"
+357;"University of Central Oklahoma";"(?=.*\bokla)(?=.*cent)";NA
+358;"Salus University";"\bsalus\b";NA
+359;"Seton Hall University";"\bseton\b";NA
+360;"Rockefeller University";"rockefe";NA
+361;"Sacred Heart University";"(?=.*sacred)(?=.*heart)";NA
+362;"University of Guelph";"guelp";NA
+363;"University of Redlands";"redland";NA
+364;"University of Toledo";"\btoled";NA
+365;"University of Manitoba";"manitoba";NA
+366;"Queen's University";"queen'?s";"coll?eg"
+367;"Ball State University";"(?=.*ball)(?=.*stat)";NA
+368;"University of Saskatchewan";"\bsaska";NA
+369;"Howard University";"\bhoward\b";NA

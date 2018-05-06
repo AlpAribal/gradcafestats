@@ -1,29 +1,33 @@
 require(data.table)
 require(stringr)
 
-test <- T
+TEST <- T
+FULL_DB_MATCH <- F
 start <- Sys.time()
 submissions <- fread(input = '..\\data\\submissions.csv',
                      sep = 'é',
                      header = T,
                      select = c('submissionId', 'major'),
                      quote = '')
-
-matches <- fread(input = '..\\data\\matchMajors.csv',
-                 sep = 'é',
-                 header = T,
-                 quote = '')
-
 submissions[, major := str_to_lower(major)]
-uniqueMajors <- unique(setdiff(submissions$major, matches$submissionMajor))
+uniqueMajors <- unique(submissions$major)
+
+if(!FULL_DB_MATCH){
+  matches <- fread(input = '..\\data\\matchMajors.csv',
+                   sep = 'é',
+                   header = T,
+                   quote = '')
+  
+  uniqueMajors <- unique(setdiff(uniqueMajors, matches$major))
+}
 
 majors_all <- fread(input = '..\\data\\majors.csv',
                    header = T,
                    quote = '"')
 
-if(test){
+if(TEST){
   #majors_all <- majors_all[(nrow(majors_all)-2):nrow(majors_all)]
-  majors_all <- majors_all[28]
+  #majors_all <- majors_all[32]
 }
 
 res <- as.data.table(matrix(data = 0, nrow = length(uniqueMajors), ncol = nrow(majors_all)+2))
@@ -57,17 +61,20 @@ repeat{
 
 res <- res[, rSum := rowSums(res[,-(1:2)])]
 
-if(test){
-  test_res <- res[rSum > 0]
+if(TEST){
+  test_res <- res[rSum > 0, .(major, matched_majorId, rSum)]
   test_res <- merge(majors_all[, .(majorId, major)], test_res, by.y = 'matched_majorId', by.x = 'majorId')
+  unmatched <- merge(res[rSum == 0, .(major)], submissions[, .(major)], by = 'major', all = F)
+  unmatched <- unmatched[, .N, by = list(major)]
+  setorder(unmatched, -N)
 } else{
-  res <- res[rSum==1, 1:2]
-  write.table(x = res,
+  write_res <- res[rSum==1 & matched_majorId > 0, 1:2]
+  write.table(x = write_res,
               file = '..\\data\\matchMajors.csv',
-              append = T,
+              append = !FULL_DB_MATCH,
               sep = 'é',
               row.names = F,
-              col.names = F,
+              col.names = FULL_DB_MATCH,
               quote = F)
 }
 print(paste0('Finished @', Sys.time(), '. Took: ', Sys.time()-start))
