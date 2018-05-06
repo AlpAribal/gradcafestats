@@ -48,7 +48,7 @@
 46;"Photography";"photog";NA
 47;"Civil / Environmental Engineering";"(?=.*(?:civil|env))(?=.*eng)";NA
 48;"Occupational Therapy";"(?=.*occ?up)(?=.*ther)";NA
-49;"Creative Writing (Poetry)";"(?=.*creat)(?=.*writ)(?=.*poet)";NA
+49;"Creative Writing (Poetry)";"poetry";NA
 50;"Sculpture";"sculpture";NA
 51;"Electrical Engineering and Computer Engineering / Science (ECE / EECE / EECS)";"(?:(?=.*elec)(?=.*comp)(?=.*(?:eng|sci)))|\bece\b|\beecs\b";"child|educ"
 52;"Biostatistics";"biostat";NA
@@ -76,3 +76,5 @@
 74;"Italian";"italia";NA
 75;"German";"german";NA
 76;"Public Administration";"\bmpa\b|(?:(?=.*public)(?=.*admin))";"bus|art|heal"
+77;"Industrial / Systems Engineering";"(?=.*(ndustr|system))(?=.*eng)";"agri|comp|bio|env|eco|ectric|soft|nano|micr|mech|embed|geo|earth|heal"
+78;"International Relations";"(?=.*inter)(?=.*relat)";NA
