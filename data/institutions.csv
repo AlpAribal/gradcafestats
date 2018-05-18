@@ -101,7 +101,7 @@
 95;"Fox School of Business | Temple University";"\bfox\b";"sam|george"
 96;"Vanderbilt University";"vander";"owen|management"
 97;"George Washington University (GW)";"(?=.*georg)(?=.*wash)";"warren|brown"
-98;"University of Rochester (Rochester)";"rochester";"minn?e|tech|\brit\b|nazar|simon|business"
+98;"University of Rochester (Rochester)";"rochester";"minn?e|inst|tech|\brit\b|nazar|simon|business"
 99;"Simon Business School | University of Rochester (Rochester)";"(?=.*simon)(?:(?=.*(?:rochester|business)))";"fra|bolivar"
 100;"University of Oxford";"oxford";"miami|\bsa.+d\b|business|sbs"
 101;"Said Business School | University of Oxford";"said|(?:(?=.*oxford)(?=.*sbs))";NA
@@ -370,3 +370,12 @@
 367;"Ball State University";"(?=.*ball)(?=.*stat)";NA
 368;"University of Saskatchewan";"\bsaska";NA
 369;"Howard University";"\bhoward\b";NA
+370;"Catholic University of America";"(?=.*catholic)(?=.*america)";NA
+371;"Edinboro University";"edinboro";NA
+372;"University of Edinburgh";"edinburg";NA
+373;"University of Idaho";"idaho";"state"
+374;"Idaho State University";"(?=.*idaho)(?=.*stat)";NA
+375;"Brigham Young University";"(?=.*brig)(?=.*young)";NA
+376;"Samford University";"samford";NA
+377;"West Chester University";"(?=.*west)(?=.*chest)";NA
+378;"Rochester Institute of Technology";"\brit\b|(?:(?=.*rochester)(?=.*inst)(?=.*tech))";NA
