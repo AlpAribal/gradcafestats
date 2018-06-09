@@ -12,6 +12,9 @@
 59;"Agricultural Economics";"(?=.*\bag)(?=.*econ)";NA
 39;"Anthropology";"anthro";"relig"
 45;"Geography";"geograp";"anth|gender"
+82;"Archives/Archival Administration/Management";"archiv";NA
+64;"Journalism";"journ";"relig"
+83;"Publishing";"publish";NA
 1;"Economics (no area specified)";"\becon";"fin|metric|poli|agri|source|law|socio|work|\bag"
 2;"Psychology (no area specified)";"(?=.*psyc)";"clinic|couns|social|exper|indus|organ|\bi/?o\b|foren|fact|human|schoo?lhist|relig"
 3;"Psychology (Clinical)";"(?=.*psyc)(?=.*clinic)";"schoo?l"
@@ -66,7 +69,6 @@
 61;"Physics";"\bphysic";"med|appl|eng|chem|bio|physician|therap|thearpy|heal|geo|pharma|oncology|nutri|activity"
 62;"Finance";"finance";"acco|econ|manag|bus|law|math"
 63;"Creative Writing (no area specified)";"(?=.*creat)(?=.*writ)";"fict|poet"
-64;"Journalism";"journal";"relig"
 65;"Political Science";"(?=.*politic)(?=.*sci)";"public|polic"
 66;"Public Policy";"(?:(?=.*public)(?=.*polic))|\bmpp\b";"politic|sci|econ|busi|heal|mba|mph|j.?d|pharm|phys|soci|aff?air"
 67;"Political Science & Public Policy";"(?=.*politic)(?=.*sci)(?=.*public)(?=.*polic)";"econ|busi|heal"
