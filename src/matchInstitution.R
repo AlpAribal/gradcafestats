@@ -26,13 +26,10 @@ insts_all <- fread(input = '..\\data\\institutions.csv',
                    quote = '"')
 if(TEST){
   #insts_all <- insts_all[(nrow(insts_all)-2):nrow(insts_all)]
-  #insts_all <- insts_all[1:50]
+  # insts_all <- insts_all[68:96]
 }
 
-res <- as.data.table(matrix(data = 0, nrow = length(uniqueInsts), ncol = nrow(insts_all)+2))
-res[, 1] <- uniqueInsts
-res[, 2] <- NA
-colnames(res) <- c('institution', 'matched_instId', insts_all[, instId])
+res <- data.table(institution = uniqueInsts, matched_instId = NA_integer_, rSum = 0)
 
 i <- 1
 repeat{
@@ -40,32 +37,33 @@ repeat{
   # Institution name should match rgx_match
   rgx <- insts_all[i , rgx_match]
   res_vec <- str_detect(string = uniqueInsts, pattern = rgx)
-
+  
   # But it shouldn't match rgx_no_match
   rgx <- insts_all[i, rgx_no_match]
   if(!is.na(rgx) && rgx != ''){
     res_vec <- res_vec & !str_detect(string = uniqueInsts, pattern = rgx)
   }
-
-  # Save the match result
-  res[,i+2] <- res_vec
-
+  
   # If match, write Id
   res[res_vec == T, matched_instId := insts_all[i, instId]]
+  res[res_vec == T, rSum := rSum + 1]
+  
   i <- i + 1
   if(i > nrow(insts_all)){
     break;
   }
 }
 
-res <- res[, rSum := rowSums(res[,-(1:2)])]
-
 if(TEST){
-  test_res <- res[rSum > 0 & rSum < 3, .(institution, matched_instId, rSum)]
+  test_res <- res[rSum > 0 & rSum < 3]
   test_res <- merge(insts_all[, .(instId, inst_name)], test_res, by.x = 'instId', by.y = 'matched_instId')
+  test_res <- test_res[instId > 0]
   unmatched <- merge(res[rSum == 0, .(institution)], submissions[, .(institution)], by = 'institution', all = F)
   unmatched <- unmatched[, .N, by = list(institution)]
   setorder(unmatched, -N)
+  if(!FULL_DB_MATCH){
+    coverage <- nrow(submissions[institution %in% matches$institution]) / nrow(submissions)
+  }
 } else{
   write_res <- res[rSum==1 & matched_instId > 0, 1:2]
   write.table(x = write_res,
