@@ -7,7 +7,7 @@ require(shinyWidgets)
 require(shinyjs)
 
 
-load("../data/cleanSubmissions.RData")
+load("cleanSubmissions.RData")
 
 uniqInsts <- sort(unique(cleanSubmissions$institution))
 uniqMajors <- sort(unique(cleanSubmissions$major))
