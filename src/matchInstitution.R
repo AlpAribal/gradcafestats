@@ -2,10 +2,10 @@ require(data.table)
 require(stringr)
 
 TEST <- T
-FULL_DB_MATCH <- F
+FULL_DB_MATCH <- T
 start <- Sys.time()
-submissions <- fread(input = '..\\data\\submissions.csv',
-                     sep = 'é',
+submissions <- fread(input = '../data/submissions.csv',
+                     sep = ';',
                      header = T,
                      select = c('submissionId', 'institution'),
                      quote = '')
@@ -13,15 +13,15 @@ submissions[, institution := str_to_lower(institution)]
 uniqueInsts <- unique(submissions$institution)
 
 if(!FULL_DB_MATCH){
-  matches <- fread(input = '..\\data\\matchInstitutions.csv',
-                   sep = 'é',
+  matches <- fread(input = '../data/matchInstitutions.csv',
+                   sep = ';',
                    header = T,
                    quote = '')
   
   uniqueInsts <- unique(setdiff(uniqueInsts, matches$institution))
 }
 
-insts_all <- fread(input = '..\\data\\institutions.csv',
+insts_all <- fread(input = '../data/institutions.csv',
                    header = T,
                    quote = '"')
 if(TEST){
@@ -60,16 +60,19 @@ if(TEST){
   test_res <- test_res[instId > 0]
   unmatched <- merge(res[rSum == 0, .(institution)], submissions[, .(institution)], by = 'institution', all = F)
   unmatched <- unmatched[, .N, by = list(institution)]
+  multimatched <- merge(res[rSum > 1, .(institution)], submissions[, .(institution)], by = 'institution', all = F)
+  multimatched <- multimatched[, .N, by = list(institution)]
   setorder(unmatched, -N)
+  setorder(multimatched, -N)
   if(!FULL_DB_MATCH){
     coverage <- nrow(submissions[institution %in% matches$institution]) / nrow(submissions)
   }
 } else{
   write_res <- res[rSum==1 & matched_instId > 0, 1:2]
   write.table(x = write_res,
-              file = '..\\data\\matchInstitutions.csv',
+              file = '../data/matchInstitutions.csv',
               append = !FULL_DB_MATCH,
-              sep = 'é',
+              sep = ';',
               row.names = F,
               col.names = FULL_DB_MATCH,
               quote = F)

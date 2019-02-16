@@ -1,8 +1,8 @@
 require(data.table)
 require(stringr)
 
-submissions <- fread(input = '..\\data\\submissions.csv',
-                     sep = 'é',
+submissions <- fread(input = '../data/submissions.csv',
+                     sep = ';',
                      header = T,
                      quote = '')
 
@@ -30,7 +30,7 @@ submissions[gpa > 4, gpa := gpa / 10]
 
 # Normalize GRE ####
 # Verbal
-concVerbal <- fread(input = '..\\data\\concordanceVerbal.csv',
+concVerbal <- fread(input = '../data/concordanceVerbal.csv',
                     header = T)
 setorder(concVerbal, PriorScale)
 
@@ -38,7 +38,7 @@ submissions[gre_v > 800 | (gre_v > 170 & gre_v < 200) | gre_v < 130, gre_v := NA
 submissions[gre_v >= 200, gre_v := concVerbal[findInterval(gre_v, concVerbal$PriorScale), CurrentScale]]
 
 # Quant
-concQuant <- fread(input = '..\\data\\concordanceQuant.csv',
+concQuant <- fread(input = '../data/concordanceQuant.csv',
                    header = T)
 setorder(concQuant, PriorScale)
 
@@ -53,11 +53,11 @@ cleanSubmissions <- submissions[, .(submissionId, submissionDate, institution = 
                                     , notif_result, notif_date, studentType, gpa, gre_v, gre_q, gre_w
                                     , notes)]
 # Merge institutions ####
-matchesInst <- fread(input = '..\\data\\matchInstitutions.csv',
-                     sep = 'é',
+matchesInst <- fread(input = '../data/matchInstitutions.csv',
+                     sep = ';',
                      header = T,
                      quote = '')
-insts_all <- fread(input = '..\\data\\institutions.csv',
+insts_all <- fread(input = '../data/institutions.csv',
                    header = T,
                    select = c('instId',"inst_name"),
                    quote = '"')
@@ -68,11 +68,11 @@ cleanSubmissions[, ':='(c("institution", "matched_instId"), NULL)]
 setnames(cleanSubmissions, "inst_name", "institution")
 
 # Merge majors ####
-matchesMajor <- fread(input = '..\\data\\matchMajors.csv',
-                      sep = 'é',
+matchesMajor <- fread(input = '../data/matchMajors.csv',
+                      sep = ';',
                       header = T,
                       quote = '')
-majors_all <- fread(input = '..\\data\\majors.csv',
+majors_all <- fread(input = '../data/majors.csv',
                     header = T,
                     select = c('majorId',"major"),
                     quote = '"')
@@ -84,10 +84,11 @@ cleanSubmissions[, ':='(c("major.x", "matched_majorId"), NULL)]
 setnames(cleanSubmissions, "major.y", "major")
 
 # Merge degrees ####
-matchesDegree <- fread(input = '..\\data\\matchDegrees.csv',
-                       sep = 'é',
+matchesDegree <- fread(input = '../data/matchDegrees.csv',
+                       sep = ';',
                        header = T,
                        quote = '')
 cleanSubmissions <- merge(cleanSubmissions, matchesDegree, by = "submissionId", all = F)
-fwrite(x = cleanSubmissions, file = '..\\data\\cleanSubmissions.csv', append = F, quote = F
-       , sep = 'é', na = NA, col.names = T)
+fwrite(x = cleanSubmissions, file = '../data/cleanSubmissions.csv', append = F, quote = F
+       , sep = ';', na = NA, col.names = T)
+save(cleanSubmissions, file = "../data/cleanSubmissions.RData")

@@ -4,8 +4,8 @@ require(stringr)
 TEST <- T
 FULL_DB_MATCH <- T
 start <- Sys.time()
-submissions <- fread(input = '..\\data\\submissions.csv',
-                     sep = 'é',
+submissions <- fread(input = '../data/submissions.csv',
+                     sep = ';',
                      header = T,
                      select = c('submissionId', 'major'),
                      quote = '')
@@ -13,15 +13,15 @@ submissions[, major := str_to_lower(major)]
 uniqueMajors <- unique(submissions$major)
 
 if(!FULL_DB_MATCH){
-  matches <- fread(input = '..\\data\\matchMajors.csv',
-                   sep = 'é',
+  matches <- fread(input = '../data/matchMajors.csv',
+                   sep = ';',
                    header = T,
                    quote = '')
   
   uniqueMajors <- unique(setdiff(uniqueMajors, matches$major))
 }
 
-majors_all <- fread(input = '..\\data\\majors.csv',
+majors_all <- fread(input = '../data/majors.csv',
                     header = T,
                     quote = '"')
 
@@ -71,9 +71,9 @@ if(TEST){
 } else{
   write_res <- res[rSum==1 & matched_majorId > 0, 1:2]
   write.table(x = write_res,
-              file = '..\\data\\matchMajors.csv',
+              file = '../data/matchMajors.csv',
               append = !FULL_DB_MATCH,
-              sep = 'é',
+              sep = ';',
               row.names = F,
               col.names = FULL_DB_MATCH,
               quote = F)

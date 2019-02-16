@@ -1,8 +1,8 @@
 require(data.table)
 require(stringr)
 
-submissions <- fread(input = '..\\data\\submissions.csv',
-                     sep = 'é',
+submissions <- fread(input = '../data/submissions.csv',
+                     sep = ';',
                      header = T,
                      select = c("submissionId","institution","major","degree","notes"),
                      quote = '')
@@ -32,9 +32,9 @@ submissions[is.na(degree) & str_detect(string = notes, pattern = rgxPhD)
 
 write_res <- submissions[, .(submissionId, degree)]
 write.table(x = write_res,
-            file = '..\\data\\matchDegrees.csv',
+            file = '../data/matchDegrees.csv',
             append = F,
-            sep = 'é',
+            sep = ';',
             row.names = F,
             col.names = T,
             quote = F)

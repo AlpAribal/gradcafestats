@@ -5,7 +5,7 @@ require(RCurl)
 Sys.setlocale("LC_TIME", "C") # This is needed for proper date handling
 
 # Load largest submissionId which is saved in a seperate file
-maxDB <- as.numeric(fread(file = '..\\data\\maxDB.txt', colClasses = 'numeric'))
+maxDB <- as.numeric(fread(file = '../data/maxDB.txt', colClasses = 'numeric'))
 if(!is.numeric(maxDB)){
   stop('maxDB is not a number')
 }
@@ -39,12 +39,13 @@ repeat {
   timer <- Sys.time()
   submissions <- readHTMLTable(sourceCode, colClasses = 'character', stringsAsFactors = FALSE)[[1]][-1,]
   submissions <- as.data.table(submissions)
+  colnames(submissions) <- c('Institution', 'Program (Season)', 'Decision & Date', 'St1', 'Date Added', 'Notes')
   
   # Modify 'Date Added' field
   submissions[, `Date Added` := as.character(as.Date(`Date Added`, format = '%d %b %Y'))]
   
   # Seperate major, degree, and semester
-  regExp <- '^\\s*(.*)\\s*,\\s*(.*)\\s*\\((.\\d\\d|\\?)\\)$'
+  regExp <- '^\\s*(.*?)\\s*,\\s*(.*?)\\s*\\((.*)\\)\\s*$'
   prog <- as.data.table(str_match(submissions$`Program (Season)`, regExp)[,-1])
   colnames(prog) <- c("major", "degree", "sem")
   prog[sem == "?", sem := NA]
@@ -75,13 +76,14 @@ repeat {
   print(paste0('Parse complete (took ', Sys.time()-timer, ' seconds: ', numResults, ' results'))
   
   # Filter results based on the largest submissionId in the database
-  results <- results[as.numeric(submissionId) > maxDB]
+  results[, submissionId := as.numeric(submissionId)]
+  results <- results[submissionId > maxDB]
   
   # Additional filters
   results <- results[!str_detect(string = institution, regex("chnlove|sexy|love-sites", ignore_case = T)), ]
   
   # If there are no new submissions, stop
-  if(nrow(results) > 0) {
+  if(nrow(results) == 0) {
     print('There are not any new submissions!')
     break
   }
@@ -91,8 +93,8 @@ repeat {
     # Trim fields
     x <- str_trim(x, side = "both")
     
-    # Delimiter for .csv files is 'é', remove all 'é' from data
-    x <- str_replace_all(x, 'é', '?')
+    # Delimiter for .csv files is ';', remove all ';' from data
+    x <- str_replace_all(x, ';', ',')
 
     # Delete unnecessary line breaks
     x <- str_replace_all(x, '\r\n', ' ')
@@ -112,15 +114,15 @@ repeat {
   # Insert the results into database
   timer <- Sys.time()
   write.table(x = results,
-              file = '..\\data\\submissions.csv',
+              file = '../data/submissions.csv',
               append = T,
-              sep = 'é',
+              sep = ';',
               row.names = F,
               col.names = F,
               quote = F)
   print(paste0('Results were inserted into database (took ', Sys.time()-timer, ' seconds) -----'))
   
-  newMaxDB <- max(results[, submissionId], newMaxDB)
+  newMaxDB <- max(results[, as.numeric(submissionId)], newMaxDB)
   
   pageNo <- pageNo + 1
   # Stop if you are at the last page OR if not all results fetched from the current page were fresh 
@@ -130,4 +132,4 @@ repeat {
 }
 
 # Save largest submissionId to a seperate file
-write.table(file = '..\\data\\maxDB.txt', x = newMaxDB, append = F, row.names = F, col.names = F, quote = F)
+write.table(file = '../data/maxDB.txt', x = newMaxDB, append = F, row.names = F, col.names = F, quote = F)
