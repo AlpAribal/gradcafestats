@@ -59,7 +59,7 @@ ui <- fluidPage(
                     , label = "Semester:"
                     , choices = uniqSems
                     , selected = {
-                      "F18"
+                      "F20"
                     }
                     , multiple = T
       )
@@ -70,6 +70,20 @@ ui <- fluidPage(
       , tags$br()
       , tags$a("Send feedback!", href = "mailto:fretpwner@gmail.com"
                , class = "text-warning")
+      , tags$br()
+      , "Last Update: Jan 24, 2020"
+      , tags$br()
+      , tags$img(src="https://hitwebcounter.com/counter/counter.php?page=7219342&style=0001&nbdigits=5&type=ip&initCount=0"
+                 , title="Unique Visitors"
+                 , Alt="PHP Hits Count"
+                 , border="0"
+                 , style="display:none")
+      , tags$img(src="https://hitwebcounter.com/counter/counter.php?page=7219397&style=0001&nbdigits=5&type=page&initCount=0"
+                 , title="Views"
+                 , Alt="PHP Hits Count"
+                 , border="0"
+                 , style="display:none")
+
     ),
     
     # Outputs
