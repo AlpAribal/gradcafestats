@@ -12,7 +12,7 @@ submissions[degree == "Other", `:=`(degree, NA)]
 
 rgxMasters <- regex("\\bmaster|\\b(?:m[bfph\\.]?a|m\\.?p\\.?p|m\\.?s[cw]?|mcs|m[\\. ]*eng|mmath|m[\\. ]*(?:phil|arch[I1S]*)|MPS|MAUD|M[AS]?PH|M\\.?Div|M[S\\.]Ed|M\\.?St|MEM|MES|MALD|MSFS|MHSc?|MTS|MDesS?|MIA|MLA(?:UD)?|LL\\.?M|MCLS|MFE|MIB|MLS|MRes|MSIM|MSPPM|Th\\.?M)\\b", 
     ignore_case = T)
-rgxPhD <- regex("\\bdoctor|\\b(?:ph[\\. ]*d|d[\\. ]*phil|A[\\. ]*u[\\. ]*D|Psy[\\. ]*D|DDes|Dr?PH|dr|Th\\.?D|DBA|DMA|DNP|DPT|ScD|DHSc?|DLA|DMP)\\b", 
+rgxPhD <- regex("\\bdoctor|\\b(?:ph[\\. ]*d|d[\\. ]*phil|A[\\. ]*u[\\. ]*D|Psy[\\. ]*D|DDes|Dr?PH|dr|Th\\.?D|DBA|DMA|DNP|DPT|ScD|DHSc?|DLA|DMP|EdD)\\b", 
     ignore_case = T)
 submissions[str_detect(string = major, pattern = rgxMasters), `:=`(degree, "Master's")]
 submissions[str_detect(string = major, pattern = rgxPhD), `:=`(degree, "PhD")]

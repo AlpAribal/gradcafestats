@@ -50,7 +50,7 @@ repeat {
     submissions[, `:=`(`Date Added`, as.character(as.Date(`Date Added`, format = "%d %b %Y")))]
     
     # Seperate major, degree, and semester
-    regExp <- "^\\s*(.*?)\\s*,\\s*(.*?)\\s*\\((.*)\\)\\s*$"
+    regExp <- "^\\s*(.*)\\s*,\\s*(.*)\\s*\\((.*)\\)\\s*$"
     prog <- as.data.table(str_match(submissions$`Program (Season)`, regExp)[, -1])
     colnames(prog) <- c("major", "degree", "sem")
     prog[sem == "?", `:=`(sem, NA)]

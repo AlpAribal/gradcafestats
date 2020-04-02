@@ -50,11 +50,11 @@ ui <- fluidPage(title = "GradCafe Statistics",
                       ,
                       label = "Degree:"
                       ,
-                      choices = c("Master's", "PhD")
+                      choices = c("Any", "Master's", "PhD")
                       ,
-                      selected = c("Master's", "PhD")
+                      selected = c("Any")
                       ,
-                      multiple = T
+                      multiple = F
                     )
                     # Select variable for student type
                     ,
@@ -112,7 +112,7 @@ ui <- fluidPage(title = "GradCafe Statistics",
                     ,
                     tags$br()
                     ,
-                    "Last Update: Jan 24, 2020"
+                    "Last Update: April 2, 2020"
                     ,
                     tags$br()
                     ,
@@ -171,15 +171,13 @@ ui <- fluidPage(title = "GradCafe Statistics",
 # Server definition ####
 server <- function(input, output) {
   filteredData <- reactive({
-    cleanSubmissions[(input$inst == "Any" |
-                        institution %in% input$inst) &
-                       (input$major == "Any" |
-                          major %in% input$major) &
-                       (input$degree == "Any" |
-                          degree %in% input$degree) &
-                       (input$studentType == "Any" |
-                          studentType %in% input$studentType) &
+    suppressWarnings(
+    cleanSubmissions[(input$inst == "Any" | institution %in% input$inst) &
+                       (input$major == "Any" | major %in% input$major) &
+                       (input$degree == "Any" | degree %in% input$degree) &
+                       (input$studentType == "Any" | studentType %in% input$studentType) &
                        (input$sem == "Any" | sem %in% input$sem)]
+    )
   })
   
   output$NoResText <- renderText({
@@ -235,7 +233,6 @@ server <- function(input, output) {
       config(
         displaylogo = F,
         displayModeBar = "hover",
-        ,
         modeBarButtonsToRemove = list(
           "hoverClosestCartesian"
           ,
@@ -279,7 +276,6 @@ server <- function(input, output) {
       config(
         displaylogo = F,
         displayModeBar = "hover",
-        ,
         modeBarButtonsToRemove = list(
           "hoverClosestCartesian"
           ,
@@ -313,7 +309,6 @@ server <- function(input, output) {
       config(
         displaylogo = F,
         displayModeBar = "hover",
-        ,
         modeBarButtonsToRemove = list(
           "hoverClosestCartesian"
           ,

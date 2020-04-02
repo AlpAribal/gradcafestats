@@ -48,7 +48,7 @@ submissions[gre_w > 6, `:=`(gre_w, NA)]
 
 cleanSubmissions <- submissions[, .(submissionId, submissionDate, institution = str_to_lower(institution), 
     major = str_to_lower(major), sem, notif_result, notif_date, studentType, gpa, 
-    gre_v, gre_q, gre_w, notes)]
+    gre_v, gre_q, gre_w)]
 # Merge institutions ####
 matchesInst <- fread(input = "../data/matchInstitutions.csv", sep = ";", header = T, 
     quote = "")
