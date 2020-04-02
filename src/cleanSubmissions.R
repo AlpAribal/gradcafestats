@@ -4,7 +4,8 @@ require(stringr)
 submissions <- fread(input = '../data/submissions.csv',
                      sep = ';',
                      header = T,
-                     quote = '')
+                     quote = '',
+                     drop = "notes")
 
 # Fill in empty sem values ####
 # If submission month >= September, then sem = F[next_year]
